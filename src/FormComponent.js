@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Form, Table} from "semantic-ui-react";
+import "./FormComponent.css";
 
 class FormComponent extends Component {
   render() {
