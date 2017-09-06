@@ -66,7 +66,7 @@ class App extends Component {
               </Grid.Column>
 
               <Grid.Column>
-                <SymbolicOutput/>
+                <SymbolicOutput permissions={this.state.permissions}/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
