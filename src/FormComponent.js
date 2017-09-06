@@ -32,55 +32,55 @@ class FormComponent extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="setuid"
+                  <Form.Checkbox type="checkbox" label="setuid" checked={this.props.permissions.special.setuid}
                                  onChange={(e, d) => this.props.onChange("special", "setuid", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Read"
+                  <Form.Checkbox type="checkbox" label="Read" checked={this.props.permissions.user.read}
                                  onChange={(e, d) => this.props.onChange("user", "read", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Read"
+                  <Form.Checkbox type="checkbox" label="Read" checked={this.props.permissions.group.read}
                                  onChange={(e, d) => this.props.onChange("group", "read", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Read"
+                  <Form.Checkbox type="checkbox" label="Read" checked={this.props.permissions.other.read}
                                  onChange={(e, d) => this.props.onChange("other", "read", d.checked)}/>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="setgid"
+                  <Form.Checkbox type="checkbox" label="setgid" checked={this.props.permissions.special.setgid}
                                  onChange={(e, d) => this.props.onChange("special", "setgid", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Write"
+                  <Form.Checkbox type="checkbox" label="Write" checked={this.props.permissions.user.write}
                                  onChange={(e, d) => this.props.onChange("user", "write", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Write"
+                  <Form.Checkbox type="checkbox" label="Write" checked={this.props.permissions.group.write}
                                  onChange={(e, d) => this.props.onChange("group", "write", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Write"
+                  <Form.Checkbox type="checkbox" label="Write" checked={this.props.permissions.other.write}
                                  onChange={(e, d) => this.props.onChange("other", "write", d.checked)}/>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Sticky mode"
+                  <Form.Checkbox type="checkbox" label="Sticky mode" checked={this.props.permissions.special.stickyMode}
                                  onChange={(e, d) => this.props.onChange("special", "stickyMode", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Execute"
+                  <Form.Checkbox type="checkbox" label="Execute" checked={this.props.permissions.user.execute}
                                  onChange={(e, d) => this.props.onChange("user", "execute", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Execute"
+                  <Form.Checkbox type="checkbox" label="Execute" checked={this.props.permissions.group.execute}
                                  onChange={(e, d) => this.props.onChange("group", "execute", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox type="checkbox" label="Execute"
+                  <Form.Checkbox type="checkbox" label="Execute" checked={this.props.permissions.other.execute}
                                  onChange={(e, d) => this.props.onChange("other", "execute", d.checked)}/>
                 </Table.Cell>
               </Table.Row>
