@@ -35,6 +35,7 @@ class App extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   handleChange(triad, permission, value) {
@@ -47,6 +48,33 @@ class App extends Component {
     });
   }
 
+  handleClear() {
+    this.setState({
+      permissions: {
+        special: {
+          setuid: false,
+          setgid: false,
+          stickyMode: false
+        },
+        user: {
+          read: false,
+          write: false,
+          execute: false
+        },
+        group: {
+          read: false,
+          write: false,
+          execute: false
+        },
+        other: {
+          read: false,
+          write: false,
+          execute: false
+        }
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -56,7 +84,8 @@ class App extends Component {
           <Grid centered padded stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <FormComponent permissions={this.state.permissions} onChange={this.handleChange}/>
+                <FormComponent permissions={this.state.permissions} onChange={this.handleChange}
+                               onClear={this.handleClear}/>
               </Grid.Column>
             </Grid.Row>
 

@@ -89,7 +89,7 @@ class FormComponent extends Component {
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan={4} style={{textAlign: "center"}}>
-                  <Form.Button type="button">Clear</Form.Button>
+                  <Form.Button type="button" onClick={(e, d) => this.props.onClear()}>Clear</Form.Button>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>
