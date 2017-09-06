@@ -2,16 +2,6 @@ import React, {Component} from "react";
 import {Form, Segment, Table} from "semantic-ui-react";
 
 class FormComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event, data) {
-    console.log(data.dataPermission);
-  }
-
   render() {
     return (
       <Segment>
