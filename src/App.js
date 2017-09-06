@@ -81,6 +81,9 @@ class App extends Component {
         <MenuBar/>
         <div style={{marginTop: "4em"}}>
           <Header as="h1" textAlign="center">Unix Permissions Calculator</Header>
+          <p style={{textAlign: "center"}}>
+            Check the required permissions.
+          </p>
           <Grid centered padded stackable>
             <Grid.Row>
               <Grid.Column width={10}>
