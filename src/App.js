@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Grid, Header} from "semantic-ui-react";
+import {Container, Grid, Header} from "semantic-ui-react";
 import MenuBar from "./MenuComponent";
 import FormComponent from "./FormComponent";
 import OctalOutput from "./OctalOutput";
@@ -81,9 +81,11 @@ class App extends Component {
         <MenuBar/>
         <div style={{marginTop: "4em"}}>
           <Header as="h1" textAlign="center">Unix Permissions Calculator</Header>
-          <p style={{textAlign: "center"}}>
-            Check the required permissions.
-          </p>
+          <Container textAlign="center">
+            <p>
+              Check the required permissions.
+            </p>
+          </Container>
           <Grid centered padded stackable>
             <Grid.Row>
               <Grid.Column width={10}>
