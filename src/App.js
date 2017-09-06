@@ -62,7 +62,7 @@ class App extends Component {
 
             <Grid.Row columns={3}>
               <Grid.Column>
-                <OctalOutput/>
+                <OctalOutput permissions={this.state.permissions}/>
               </Grid.Column>
 
               <Grid.Column>
