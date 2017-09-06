@@ -6,6 +6,47 @@ import OctalOutput from "./OctalOutput";
 import SymbolicOutput from "./SymbolicOutput";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      permissions: {
+        special: {
+          setuid: false,
+          setgid: false,
+          stickyMode: false
+        },
+        user: {
+          read: false,
+          write: false,
+          execute: false
+        },
+        group: {
+          read: false,
+          write: false,
+          execute: false
+        },
+        other: {
+          read: false,
+          write: false,
+          execute: false
+        }
+      }
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(triad, permission, value) {
+    this.setState(prevState => {
+      let updatedTriad = Object.assign({}, prevState.permissions[triad], {[permission]: value});
+      let updatedPermissions = Object.assign({}, prevState.permissions, {[triad]: updatedTriad});
+      return {
+        permissions: updatedPermissions
+      };
+    }, () => console.log(this.state.permissions));
+  }
+
   render() {
     return (
       <div>
@@ -15,7 +56,7 @@ class App extends Component {
           <Grid centered padded stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <FormComponent/>
+                <FormComponent permissions={this.state.permissions} onChange={this.handleChange}/>
               </Grid.Column>
             </Grid.Row>
 

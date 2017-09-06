@@ -2,6 +2,16 @@ import React, {Component} from "react";
 import {Form, Segment, Table} from "semantic-ui-react";
 
 class FormComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event, data) {
+    console.log(data.dataPermission);
+  }
+
   render() {
     return (
       <Segment>
@@ -22,44 +32,56 @@ class FormComponent extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <Form.Checkbox label="setuid"/>
+                  <Form.Checkbox type="checkbox" label="setuid"
+                                 onChange={(e, d) => this.props.onChange("special", "setuid", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Read"/>
+                  <Form.Checkbox type="checkbox" label="Read"
+                                 onChange={(e, d) => this.props.onChange("user", "read", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Read"/>
+                  <Form.Checkbox type="checkbox" label="Read"
+                                 onChange={(e, d) => this.props.onChange("group", "read", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Read"/>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Form.Checkbox label="setgid"/>
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Checkbox label="Write"/>
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Checkbox label="Write"/>
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Checkbox label="Write"/>
+                  <Form.Checkbox type="checkbox" label="Read"
+                                 onChange={(e, d) => this.props.onChange("other", "read", d.checked)}/>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <Form.Checkbox label="Sticky mode"/>
+                  <Form.Checkbox type="checkbox" label="setgid"
+                                 onChange={(e, d) => this.props.onChange("special", "setgid", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Execute"/>
+                  <Form.Checkbox type="checkbox" label="Write"
+                                 onChange={(e, d) => this.props.onChange("user", "write", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Execute"/>
+                  <Form.Checkbox type="checkbox" label="Write"
+                                 onChange={(e, d) => this.props.onChange("group", "write", d.checked)}/>
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Checkbox label="Execute"/>
+                  <Form.Checkbox type="checkbox" label="Write"
+                                 onChange={(e, d) => this.props.onChange("other", "write", d.checked)}/>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <Form.Checkbox type="checkbox" label="Sticky mode"
+                                 onChange={(e, d) => this.props.onChange("special", "stickyMode", d.checked)}/>
+                </Table.Cell>
+                <Table.Cell>
+                  <Form.Checkbox type="checkbox" label="Execute"
+                                 onChange={(e, d) => this.props.onChange("user", "execute", d.checked)}/>
+                </Table.Cell>
+                <Table.Cell>
+                  <Form.Checkbox type="checkbox" label="Execute"
+                                 onChange={(e, d) => this.props.onChange("group", "execute", d.checked)}/>
+                </Table.Cell>
+                <Table.Cell>
+                  <Form.Checkbox type="checkbox" label="Execute"
+                                 onChange={(e, d) => this.props.onChange("other", "execute", d.checked)}/>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
