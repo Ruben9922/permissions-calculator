@@ -44,7 +44,7 @@ class App extends Component {
       return {
         permissions: updatedPermissions
       };
-    }, () => console.log(this.state.permissions));
+    });
   }
 
   render() {
