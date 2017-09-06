@@ -83,7 +83,8 @@ class App extends Component {
           <Header as="h1" textAlign="center">Unix Permissions Calculator</Header>
           <Container textAlign="center">
             <p>
-              Check the required permissions.
+              Check the required permissions in the following table and the octal and symbolic notations will be updated
+              accordingly.
             </p>
           </Container>
           <Grid centered padded stackable>
