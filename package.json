@@ -16,7 +16,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d build"
   },
-  "homepage": "http://rubendougall.co.uk/permissions-calculator/",
+  "homepage": "https://rubendougall.co.uk/permissions-calculator/",
   "devDependencies": {
     "gh-pages": "^1.0.0"
   }
