@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - 14
 script:
-- npm run-script build
+- npm run build
 deploy:
   provider: netlify
   site: 04224714-ad23-4783-bcb1-481796773230
