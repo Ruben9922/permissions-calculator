@@ -1,3 +1,3 @@
 # Permissions Calculator
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/04224714-ad23-4783-bcb1-481796773230/deploy-status)](https://app.netlify.com/sites/rubendougall-permissions-calculator/deploys)
+[![Build Status](https://travis-ci.com/Ruben9922/permissions-calculator.svg?branch=master)](https://travis-ci.com/Ruben9922/permissions-calculator)
