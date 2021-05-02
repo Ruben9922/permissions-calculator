@@ -5,6 +5,7 @@ import FormComponent from "./FormComponent";
 import OctalOutput from "./OctalOutput";
 import SymbolicOutput from "./SymbolicOutput";
 import ReactGA from "react-ga";
+import produce from "immer";
 
 const TRACKING_ID = "UA-23280894-8";
 ReactGA.initialize(TRACKING_ID);
@@ -36,11 +37,9 @@ export default function App() {
   const [permissions, setPermissions] = React.useState(initialPermissions);
 
   const handleChange = (triad, permission, value) => {
-    setPermissions(prevPermissions => {
-      const updatedTriad = Object.assign({}, prevPermissions[triad], {[permission]: value});
-      const updatedPermissions = Object.assign({}, prevPermissions, {[triad]: updatedTriad});
-      return updatedPermissions;
-    });
+    setPermissions(produce(draft => {
+      draft[triad][permission] = value;
+    }));
   };
 
   const handleClear = () => setPermissions(initialPermissions);
