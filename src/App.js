@@ -4,6 +4,10 @@ import MenuBar from "./MenuComponent";
 import FormComponent from "./FormComponent";
 import OctalOutput from "./OctalOutput";
 import SymbolicOutput from "./SymbolicOutput";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "UA-23280894-8";
+ReactGA.initialize(TRACKING_ID);
 
 class App extends Component {
   constructor(props) {
