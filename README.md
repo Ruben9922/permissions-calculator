@@ -1,3 +1,3 @@
 # Permissions Calculator
 
-[![Build Status](https://travis-ci.com/Ruben9922/permissions-calculator.svg?branch=master)](https://travis-ci.com/Ruben9922/permissions-calculator)
+![Build Status](https://github.com/Ruben9922/permissions-calculator/actions/workflows/build-deploy.yml/badge.svg)
