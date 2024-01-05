@@ -15,7 +15,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
-      working-directory: ./web-app
+      run:
+        working-directory: ./web-app
 
     steps:
     - name: Checkout code
@@ -25,6 +26,7 @@ jobs:
       with:
         node-version: 14.x
         cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
