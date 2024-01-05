@@ -16,7 +16,7 @@ export default function CheckBoxWithText({
   return (
     <View style={styles.checkBoxContainer}>
       <CheckBox value={value} onValueChange={onValueChange} style={styles.checkBox} />
-      <Text style={styles.label}>{text}</Text>
+      <Text style={styles.label} onPress={() => onValueChange ? onValueChange(!value) : undefined}>{text}</Text>
     </View>
   );
 }
