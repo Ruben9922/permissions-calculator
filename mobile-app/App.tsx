@@ -75,32 +75,36 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <View
-          style={{
+          style={[styles.mainContainer, {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Text style={styles.sectionTitle}>Unix Permissions Calculator</Text>
-          <Text style={styles.sectionTitle}>
-            Check the required permissions and the octal and symbolic notations
-            will be updated accordingly.
-          </Text>
-          <ScrollView horizontal={true}>
-            <Form
-              permissions={permissions}
-              handleSpecialChange={handleSpecialChange}
-              handleChange={handleChange}
-            />
-          </ScrollView>
-          <View style={styles.buttonContainer}>
-            <Button
-              title="Select all"
-              onPress={handleSelectAll}
-              disabled={allSelected}
-            />
-            <Button
-              title="Deselect all"
-              onPress={handleDeselectAll}
-              disabled={allDeselected}
-            />
+          }]}>
+          <View style={{rowGap: 8}}>
+            <Text style={[styles.title, {textAlign: "center"}]}>Unix Permissions Calculator</Text>
+            <Text style={[styles.description, {textAlign: "center"}]}>
+              Check the required permissions and the octal and symbolic notations
+              will be updated accordingly.
+            </Text>
+          </View>
+          <View style={{rowGap: 10}}>
+            <ScrollView horizontal={true}>
+              <Form
+                permissions={permissions}
+                handleSpecialChange={handleSpecialChange}
+                handleChange={handleChange}
+              />
+            </ScrollView>
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Select all"
+                onPress={handleSelectAll}
+                disabled={allSelected}
+              />
+              <Button
+                title="Deselect all"
+                onPress={handleDeselectAll}
+                disabled={allDeselected}
+              />
+            </View>
           </View>
           <OctalOutput permissions={permissions} />
           <SymbolicOutput permissions={permissions} />
@@ -111,25 +115,23 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
+  mainContainer: {
+    rowGap: 40,
     paddingHorizontal: 24,
+    paddingVertical: 30,
   },
-  sectionTitle: {
+  title: {
     fontSize: 24,
     fontWeight: "600",
   },
-  sectionDescription: {
-    marginTop: 8,
+  description: {
     fontSize: 18,
     fontWeight: "400",
-  },
-  highlight: {
-    fontWeight: "700",
   },
   buttonContainer: {
     flexDirection: "row",
     alignSelf: "center",
+    gap: 10,
   },
 });
 

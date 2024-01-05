@@ -15,7 +15,7 @@ export default function CheckBoxWithText({
                           }: CheckBoxWithTextProps): React.JSX.Element {
   return (
     <View style={styles.checkBoxContainer}>
-      <CheckBox value={value} onValueChange={onValueChange} />
+      <CheckBox value={value} onValueChange={onValueChange} style={styles.checkBox} />
       <Text style={styles.label}>{text}</Text>
     </View>
   );
@@ -26,7 +26,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  checkBox: {
+    marginLeft: -4,
+  },
   label: {
     margin: 0,
+    marginBottom: 1,
+    fontSize: 16,
   },
 });

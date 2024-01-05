@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Permission, Permissions } from "./permissions.ts";
 
 type SymbolicOutputProps = {
@@ -46,9 +46,31 @@ export default function SymbolicOutput({permissions}: SymbolicOutputProps): Reac
     + computeSymbolicForTriad(permissions.other, permissions.special.stickyMode, true);
 
   return (
-    <View>
-      <Text>Symbolic Notation</Text>
-      <Text>{symbolic}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Symbolic Notation</Text>
+      <Text style={[styles.code, styles.large, styles.bold]}>{symbolic}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  code: {
+    fontFamily: "monospace",
+  },
+  medium: {
+    fontSize: 16,
+  },
+  large: {
+    fontSize: 28,
+  },
+  bold: {
+    fontWeight: "700",
+  },
+});

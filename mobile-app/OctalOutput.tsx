@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Permissions } from "./permissions.ts";
 
 type OctalOutputProps = {
@@ -28,12 +28,34 @@ export default function OctalOutput({permissions}: OctalOutputProps): React.JSX.
     + String(computeDigit(permissions.other.read, permissions.other.write, permissions.other.execute));
 
   return (
-    <View>
-      <Text>Octal</Text>
-      <Text>{octal}</Text>
-      <Text>
-        Example: <Text>chmod {octal} /path/to/file</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Octal Notation</Text>
+      <Text style={[styles.code, styles.large, styles.bold]}>{octal}</Text>
+      <Text style={styles.medium}>
+        Example: <Text style={[styles.code, styles.bold]}>chmod {octal} /path/to/file</Text>
       </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  code: {
+    fontFamily: "monospace",
+  },
+  medium: {
+    fontSize: 16,
+  },
+  large: {
+    fontSize: 28,
+  },
+  bold: {
+    fontWeight: "700",
+  },
+});

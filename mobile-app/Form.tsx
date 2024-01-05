@@ -19,7 +19,7 @@ export default function Form({
     <View style={styles.container}>
       {Object.entries(permissions).map(([$class, classPermissions]) => (
         <View style={styles.column} key={$class}>
-          <Text>{startCase($class)}</Text>
+          <Text style={styles.columnLabel}>{startCase($class)}</Text>
           {Object.entries(classPermissions).map(([permission, value]) => {
             const onValueChange = (updatedValue: boolean) =>
               $class === "special"
@@ -51,9 +51,15 @@ export default function Form({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    gap: 10,
   },
   column: {
     flexDirection: "column",
     flex: 1,
+  },
+  columnLabel: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 2,
   },
 });
