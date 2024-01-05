@@ -7,9 +7,15 @@ name: Build & Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - 'master'
+    paths:
+      - 'web-app/**'
   pull_request:
-    branches: [ master ]
+    branches:
+      - 'master'
+    paths:
+      - 'web-app/**'
 
 jobs:
   build:
