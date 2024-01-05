@@ -10,11 +10,13 @@ on:
     branches:
       - 'master'
     paths:
+      - '.github/workflows/build-deploy.yaml'
       - 'web-app/**'
   pull_request:
     branches:
       - 'master'
     paths:
+      - '.github/workflows/build-deploy.yaml'
       - 'web-app/**'
 
 jobs:
