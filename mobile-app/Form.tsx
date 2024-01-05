@@ -1,7 +1,8 @@
 import startCase from "lodash/fp/startCase";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useColorScheme, View } from "react-native";
 import CheckBoxWithText from "./CheckBoxWithText.tsx";
+import { colors } from "./colors.ts";
 import { Class, Permission, Permissions, SpecialPermission } from "./permissions.ts";
 
 type FormProps = {
@@ -15,11 +16,15 @@ export default function Form({
                 handleSpecialChange,
                 handleChange,
               }: FormProps): React.JSX.Element {
+  const isDarkMode = useColorScheme() === "dark";
+  const currentColors = isDarkMode ? colors.dark : colors.light;
+  const textStyle = {color: currentColors.primary};
+
   return (
     <View style={styles.container}>
       {Object.entries(permissions).map(([$class, classPermissions]) => (
         <View style={styles.column} key={$class}>
-          <Text style={styles.columnLabel}>{startCase($class)}</Text>
+          <Text style={[textStyle, styles.columnLabel]}>{startCase($class)}</Text>
           {Object.entries(classPermissions).map(([permission, value]) => {
             const onValueChange = (updatedValue: boolean) =>
               $class === "special"

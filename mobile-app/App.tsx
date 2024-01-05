@@ -10,9 +10,9 @@ import {
   useColorScheme,
   View,
 } from "react-native";
-import {Colors} from "react-native/Libraries/NewAppScreen";
 import {useImmer} from "use-immer";
 import startCase from "lodash/fp/startCase";
+import { colors } from "./colors.ts";
 import Form from "./Form.tsx";
 import OctalOutput from "./OctalOutput.tsx";
 import {
@@ -28,10 +28,9 @@ function App(): React.JSX.Element {
   const [permissions, updatePermissions] = useImmer(permissionsNoneSelected);
 
   const isDarkMode = useColorScheme() === "dark";
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const currentColors = isDarkMode ? colors.dark : colors.light;
+  const backgroundStyle = {backgroundColor: currentColors.background};
+  const textStyle = {color: currentColors.primary};
 
   const handleSpecialChange = (
     permission: SpecialPermission,
@@ -74,13 +73,10 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View
-          style={[styles.mainContainer, {
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }]}>
+        <View style={styles.mainContainer}>
           <View style={{rowGap: 8}}>
-            <Text style={[styles.title, {textAlign: "center"}]}>Unix Permissions Calculator</Text>
-            <Text style={[styles.description, {textAlign: "center"}]}>
+            <Text style={[textStyle, styles.title, {textAlign: "center"}]}>Unix Permissions Calculator</Text>
+            <Text style={[textStyle, styles.description, {textAlign: "center"}]}>
               Check the required permissions and the octal and symbolic notations
               will be updated accordingly.
             </Text>
@@ -119,6 +115,7 @@ const styles = StyleSheet.create({
     rowGap: 40,
     paddingHorizontal: 24,
     paddingVertical: 30,
+    flexDirection: "column",
   },
   title: {
     fontSize: 24,

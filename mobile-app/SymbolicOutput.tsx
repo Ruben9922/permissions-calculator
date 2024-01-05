@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useColorScheme, View } from "react-native";
+import { colors } from "./colors.ts";
 import { Permission, Permissions } from "./permissions.ts";
 
 type SymbolicOutputProps = {
@@ -7,6 +8,10 @@ type SymbolicOutputProps = {
 };
 
 export default function SymbolicOutput({permissions}: SymbolicOutputProps): React.JSX.Element {
+  const isDarkMode = useColorScheme() === "dark";
+  const currentColors = isDarkMode ? colors.dark : colors.light;
+  const textStyle = {color: currentColors.primary};
+
   const computeReadSymbol = (read: boolean): string => (read ? "r" : "-");
   const computeWriteSymbol = (write: boolean): string => (write ? "w" : "-");
   const computeExecuteSymbol = (execute: boolean, special: boolean, stickyMode: boolean): string => {
@@ -47,8 +52,8 @@ export default function SymbolicOutput({permissions}: SymbolicOutputProps): Reac
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Symbolic Notation</Text>
-      <Text style={[styles.code, styles.large, styles.bold]}>{symbolic}</Text>
+      <Text style={[textStyle, styles.title]}>Symbolic Notation</Text>
+      <Text style={[textStyle, styles.code, styles.large, styles.bold]}>{symbolic}</Text>
     </View>
   );
 }

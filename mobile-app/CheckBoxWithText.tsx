@@ -1,6 +1,7 @@
 import CheckBox from "@react-native-community/checkbox";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useColorScheme, View } from "react-native";
+import { colors } from "./colors.ts";
 
 type CheckBoxWithTextProps = {
   value: boolean;
@@ -13,10 +14,14 @@ export default function CheckBoxWithText({
                             text,
                             onValueChange,
                           }: CheckBoxWithTextProps): React.JSX.Element {
+  const isDarkMode = useColorScheme() === "dark";
+  const currentColors = isDarkMode ? colors.dark : colors.light;
+  const textStyle = {color: currentColors.primary};
+
   return (
     <View style={styles.checkBoxContainer}>
       <CheckBox value={value} onValueChange={onValueChange} style={styles.checkBox} />
-      <Text style={styles.label} onPress={() => onValueChange ? onValueChange(!value) : undefined}>{text}</Text>
+      <Text style={[textStyle, styles.label]} onPress={() => onValueChange ? onValueChange(!value) : undefined}>{text}</Text>
     </View>
   );
 }
