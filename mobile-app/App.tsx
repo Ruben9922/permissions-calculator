@@ -1,18 +1,13 @@
-import CheckBox from "@react-native-community/checkbox";
+import { produce } from "immer";
 import React from "react";
 import {
-  Button,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
 } from "react-native";
+import {Appbar, Button, Text, useTheme} from "react-native-paper";
 import {useImmer} from "use-immer";
-import startCase from "lodash/fp/startCase";
-import { colors } from "./colors.ts";
 import Form from "./Form.tsx";
 import OctalOutput from "./OctalOutput.tsx";
 import {
@@ -20,17 +15,16 @@ import {
   Permission,
   permissionsAllSelected,
   permissionsNoneSelected,
-  SpecialPermission
+  SpecialPermission,
 } from "./permissions.ts";
 import SymbolicOutput from "./SymbolicOutput.tsx";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function App(): React.JSX.Element {
   const [permissions, updatePermissions] = useImmer(permissionsNoneSelected);
 
-  const isDarkMode = useColorScheme() === "dark";
-  const currentColors = isDarkMode ? colors.dark : colors.light;
-  const backgroundStyle = {backgroundColor: currentColors.background};
-  const textStyle = {color: currentColors.primary};
+  const theme = useTheme();
+  const backgroundStyle = {backgroundColor: theme.colors.background};
 
   const handleSpecialChange = (
     permission: SpecialPermission,
@@ -65,18 +59,20 @@ function App(): React.JSX.Element {
     .every(x => x);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle, {flex: 1}]}>
       <StatusBar
-        barStyle={isDarkMode ? "light-content" : "dark-content"}
+        barStyle={theme.dark ? "light-content" : "dark-content"}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <Appbar.Header elevated={true}>
+        <Appbar.Content title="Unix Permissions Calculator" />
+      </Appbar.Header>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <View style={styles.mainContainer}>
           <View style={{rowGap: 8}}>
-            <Text style={[textStyle, styles.title, {textAlign: "center"}]}>Unix Permissions Calculator</Text>
-            <Text style={[textStyle, styles.description, {textAlign: "center"}]}>
+            <Text variant="bodyLarge" style={{textAlign: "center"}}>
               Check the required permissions and the octal and symbolic notations
               will be updated accordingly.
             </Text>
@@ -90,16 +86,12 @@ function App(): React.JSX.Element {
               />
             </ScrollView>
             <View style={styles.buttonContainer}>
-              <Button
-                title="Select all"
-                onPress={handleSelectAll}
-                disabled={allSelected}
-              />
-              <Button
-                title="Deselect all"
-                onPress={handleDeselectAll}
-                disabled={allDeselected}
-              />
+              <Button onPress={handleSelectAll} disabled={allSelected} mode="outlined">
+                Select all
+              </Button>
+              <Button onPress={handleDeselectAll} disabled={allDeselected} mode="outlined">
+                Deselect all
+              </Button>
             </View>
           </View>
           <OctalOutput permissions={permissions} />

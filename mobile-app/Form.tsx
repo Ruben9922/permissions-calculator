@@ -1,9 +1,13 @@
 import startCase from "lodash/fp/startCase";
 import React from "react";
-import { StyleSheet, Text, useColorScheme, View } from "react-native";
-import CheckBoxWithText from "./CheckBoxWithText.tsx";
-import { colors } from "./colors.ts";
-import { Class, Permission, Permissions, SpecialPermission } from "./permissions.ts";
+import {StyleSheet, View} from "react-native";
+import {Checkbox, Text} from "react-native-paper";
+import {
+  Class,
+  Permission,
+  Permissions,
+  SpecialPermission,
+} from "./permissions.ts";
 
 type FormProps = {
   permissions: Permissions;
@@ -16,15 +20,11 @@ export default function Form({
                 handleSpecialChange,
                 handleChange,
               }: FormProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === "dark";
-  const currentColors = isDarkMode ? colors.dark : colors.light;
-  const textStyle = {color: currentColors.primary};
-
   return (
     <View style={styles.container}>
       {Object.entries(permissions).map(([$class, classPermissions]) => (
         <View style={styles.column} key={$class}>
-          <Text style={[textStyle, styles.columnLabel]}>{startCase($class)}</Text>
+          <Text variant="labelLarge" style={styles.columnLabel}>{startCase($class)}</Text>
           {Object.entries(classPermissions).map(([permission, value]) => {
             const onValueChange = (updatedValue: boolean) =>
               $class === "special"
@@ -39,11 +39,11 @@ export default function Form({
                 );
 
             return (
-              <CheckBoxWithText
+              <Checkbox.Item
                 key={permission}
-                value={value}
-                text={startCase(permission)}
-                onValueChange={onValueChange}
+                status={value ? "checked" : "unchecked"}
+                label={startCase(permission)}
+                onPress={() => onValueChange(!value)}
               />
             );
           })}
@@ -63,8 +63,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   columnLabel: {
-    fontSize: 16,
-    fontWeight: "600",
     marginBottom: 2,
   },
 });

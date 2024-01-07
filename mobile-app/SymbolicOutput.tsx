@@ -1,17 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, useColorScheme, View } from "react-native";
-import { colors } from "./colors.ts";
-import { Permission, Permissions } from "./permissions.ts";
+import {StyleSheet, View} from "react-native";
+import {Text} from "react-native-paper";
+import {Permission, Permissions} from "./permissions.ts";
 
 type SymbolicOutputProps = {
   permissions: Permissions;
 };
 
 export default function SymbolicOutput({permissions}: SymbolicOutputProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === "dark";
-  const currentColors = isDarkMode ? colors.dark : colors.light;
-  const textStyle = {color: currentColors.primary};
-
   const computeReadSymbol = (read: boolean): string => (read ? "r" : "-");
   const computeWriteSymbol = (write: boolean): string => (write ? "w" : "-");
   const computeExecuteSymbol = (execute: boolean, special: boolean, stickyMode: boolean): string => {
@@ -52,8 +48,8 @@ export default function SymbolicOutput({permissions}: SymbolicOutputProps): Reac
 
   return (
     <View style={styles.container}>
-      <Text style={[textStyle, styles.title]}>Symbolic Notation</Text>
-      <Text style={[textStyle, styles.code, styles.large, styles.bold]}>{symbolic}</Text>
+      <Text variant="titleMedium">Symbolic Notation</Text>
+      <Text variant="displaySmall" style={styles.code}>{symbolic}</Text>
     </View>
   );
 }
@@ -62,18 +58,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
   code: {
     fontFamily: "monospace",
-  },
-  medium: {
-    fontSize: 16,
-  },
-  large: {
-    fontSize: 28,
   },
   bold: {
     fontWeight: "700",
