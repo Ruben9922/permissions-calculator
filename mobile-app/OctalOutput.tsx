@@ -30,7 +30,7 @@ export default function OctalOutput({permissions}: OctalOutputProps): React.JSX.
 
   return (
     <View style={styles.container}>
-      <Text variant="titleMedium">Octal Notation</Text>
+      <Text variant="titleMedium">Numeric Notation</Text>
       <Text variant="displaySmall" style={styles.code}>{octal}</Text>
       <Text variant="bodyLarge">
         Example: <Text style={[styles.code, styles.bold]}>chmod {octal} /path/to/file</Text>
