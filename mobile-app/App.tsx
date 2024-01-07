@@ -78,7 +78,7 @@ function App(): React.JSX.Element {
             </Text>
           </View>
           <View style={{rowGap: 10}}>
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} style={{alignSelf: "center"}}>
               <Form
                 permissions={permissions}
                 handleSpecialChange={handleSpecialChange}
