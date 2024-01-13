@@ -1,7 +1,8 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import {Text} from "react-native-paper";
 import {Permissions} from "./permissions.ts";
+import Clipboard from "@react-native-clipboard/clipboard";
 
 type OctalOutputProps = {
   permissions: Permissions;
@@ -31,7 +32,11 @@ export default function OctalOutput({permissions}: OctalOutputProps): React.JSX.
   return (
     <View style={styles.container}>
       <Text variant="titleMedium">Numeric Notation</Text>
-      <Text variant="displaySmall" style={styles.code}>{octal}</Text>
+      <TouchableOpacity onPress={() => Clipboard.setString(octal)}>
+        <Text variant="displaySmall" style={styles.code}>
+          {octal}
+        </Text>
+      </TouchableOpacity>
       <Text variant="bodyLarge">
         Example: <Text style={[styles.code, styles.bold]}>chmod {octal} /path/to/file</Text>
       </Text>

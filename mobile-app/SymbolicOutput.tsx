@@ -1,7 +1,8 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, Touchable, TouchableOpacity, View } from "react-native";
 import {Text} from "react-native-paper";
 import {Permission, Permissions} from "./permissions.ts";
+import Clipboard from "@react-native-clipboard/clipboard";
 
 type SymbolicOutputProps = {
   permissions: Permissions;
@@ -49,7 +50,11 @@ export default function SymbolicOutput({permissions}: SymbolicOutputProps): Reac
   return (
     <View style={styles.container}>
       <Text variant="titleMedium">Symbolic Notation</Text>
-      <Text variant="displaySmall" style={styles.code}>{symbolic}</Text>
+      <TouchableOpacity onPress={() => Clipboard.setString(symbolic)}>
+        <Text variant="displaySmall" style={styles.code}>
+          {symbolic}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
