@@ -65,7 +65,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <Appbar.Header elevated={true}>
-        <Appbar.Content title="Unix Permissions Calculator" />
+        <Appbar.Content title="Linux Permissions Calculator" />
       </Appbar.Header>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
