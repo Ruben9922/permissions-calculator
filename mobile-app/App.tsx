@@ -73,8 +73,8 @@ function App(): React.JSX.Element {
         <View style={styles.mainContainer}>
           <View style={{rowGap: 8}}>
             <Text variant="bodyLarge" style={{textAlign: "center"}}>
-              Check the required permissions and the octal and symbolic notations
-              will be updated accordingly.
+              Check the required permissions and the numeric and symbolic
+              notation will be updated accordingly.
             </Text>
           </View>
           <View style={{rowGap: 10}}>
