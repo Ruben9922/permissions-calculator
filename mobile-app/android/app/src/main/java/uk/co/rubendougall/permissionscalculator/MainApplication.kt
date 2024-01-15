@@ -1,4 +1,4 @@
-package com.permissionscalculator
+package uk.co.rubendougall.permissionscalculator
 
 import android.app.Application
 import com.facebook.react.PackageList

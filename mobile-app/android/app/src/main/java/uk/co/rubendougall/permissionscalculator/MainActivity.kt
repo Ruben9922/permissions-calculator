@@ -1,4 +1,4 @@
-package com.permissionscalculator
+package uk.co.rubendougall.permissionscalculator
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
